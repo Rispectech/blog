@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import { LeftVector, RightVector } from "./components/Vectors";
 import BlogContainer from "./components/BlogContainer";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <RightVector />
       <Hero />
       <BlogContainer />
+      <Footer />
     </section>
   );
 }

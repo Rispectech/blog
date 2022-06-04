@@ -6,8 +6,10 @@ import { AiFillDelete } from "react-icons/ai";
 import { useFormik } from "formik";
 import CustomDialog from "./Dialog";
 import { Button, FormControl, TextField } from "@material-ui/core";
+import { useGlobalContext } from "../context";
 
 const LargeCard = ({ blog, editable }) => {
+  const { removeStory, addStory } = useGlobalContext();
   const [isEditing, setIsEditing] = useState(false);
   const classes = useStyles();
   const currentCalenderDate = new Date(blog.publishedAt);
@@ -19,14 +21,23 @@ const LargeCard = ({ blog, editable }) => {
   const formik = useFormik({
     initialValues: blog,
   });
+
+  const handleEditing = () => {
+    // console.log(formik.values);
+    removeStory(blog.publishedAt);
+    addStory(formik.values);
+    formik.resetForm(formik.initialValues);
+    // console.log(formik.values);
+    handleClose();
+  };
   return (
     <div>
-      <Grid container spacing={10}>
+      <Grid container spacing={10} className={classes.width}>
         <Grid item sm={7}>
           <img src={blog.urlToImage} alt="" className={classes.blogImage} />
         </Grid>
         <Grid item sm={5}>
-          <a href={blog.url} className={classes.blogText}>
+          <div className={classes.blogText}>
             <div>
               <h4>
                 {`${currentCalenderDate
@@ -39,22 +50,29 @@ const LargeCard = ({ blog, editable }) => {
 
               {editable && (
                 <div>
-                  <FaEdit color="green" />
-                  <AiFillDelete color="red" />
+                  <FaEdit color="green" onClick={() => setIsEditing(true)} />
+                  <AiFillDelete color="red" onClick={() => removeStory(blog.publishedAt)} />
                 </div>
               )}
             </div>
 
-            <h3>{blog.title}</h3>
+            <a href={blog.url}>
+              <h3>{blog.title}</h3>
+            </a>
 
             <p>{blog.description}</p>
 
             <h4>{blog.author}</h4>
-          </a>
+          </div>
         </Grid>
       </Grid>
 
-      <CustomDialog open={isEditing} handleClose={handleClose} dialogTitle="Editing your blog">
+      <CustomDialog
+        open={isEditing}
+        handleClose={handleClose}
+        dialogTitle="Editing your blog"
+        onSubmit={handleEditing}
+      >
         <FormControl fullWidth className={classes.childProfileImg}>
           <div className={classes.dialogFieldWrapper}>
             <TextField

@@ -12,7 +12,7 @@ const Navbar = () => {
     setShowLinks(!showLinks);
   };
 
-  console.log(links);
+  // console.log(links);
   useEffect(() => {
     const linksHeight = linksRef.current.getBoundingClientRect().height;
     if (showLinks) {

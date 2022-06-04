@@ -42,7 +42,7 @@ const Hero = () => {
           Create your Own
         </Button>
         <Button color="primary" className={classes.lowBtn}>
-          Explore latest blogs
+          <a href="#latest">Explore latest blogs</a>
         </Button>
       </div>
 

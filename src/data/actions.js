@@ -4,3 +4,6 @@ export const REMOVE_STORY = "REMOVE_STORY";
 export const HANDLE_PAGE = "HANDLE_PAGE";
 export const HANDLE_SEARCH = "HANDLE_SEARCH";
 export const ADD_STORY = "ADD_STORY";
+export const GET_LOCAL_STORAGE = "GET_LOCAL_STORAGE";
+export const SET_LOCAL_STORAGE = "SET_LOCAL_STORAGE";
+export const ALL_BLOGS = "ALL_BLOGS";

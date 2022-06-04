@@ -40,12 +40,8 @@ export default function CustomDialog({ open, handleClose, dialogTitle, children,
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button autoFocus onClick={handleClose}>
-          cancel
-        </Button>
-        <Button onClick={onSubmit} autoFocus>
-          done
-        </Button>
+        <Button onClick={handleClose}>cancel</Button>
+        <Button onClick={onSubmit}>done</Button>
       </DialogActions>
     </Dialog>
   );

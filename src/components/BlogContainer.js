@@ -20,7 +20,7 @@ const BlogContainer = () => {
   };
 
   return (
-    <section className="section">
+    <section className="section" id="latest">
       <div className={classes.blogRouter}>
         {blogs.map((item, index) => {
           return (

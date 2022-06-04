@@ -15,6 +15,17 @@ const colors = {
 
 const useStyles = makeStyles((theme) => {
   return {
+    //utility
+
+    height: {
+      height: "100%",
+      padding: "2rem",
+    },
+
+    width: {
+      width: "100%",
+    },
+
     nav: {
       background: colors.white,
       boxShadow: colors.lightShadow,
@@ -172,6 +183,7 @@ const useStyles = makeStyles((theme) => {
 
     lowBtn: {
       border: "2px solid #3f51b5",
+      colors: "#3f51b5 !important",
     },
 
     //blogs
@@ -197,6 +209,19 @@ const useStyles = makeStyles((theme) => {
 
     blogContainer: {
       margin: "2rem 0rem",
+      maxHeight: "200vh",
+      overflowY: "scroll",
+      overflowX: "hidden",
+
+      "&::-webkit-scrollbar": {
+        width: "0.4em",
+      },
+      "&::-webkit-scrollbar-track": {
+        "-webkit-box-shadow": "inset 0 0 6px rgba(0,0,0,0.00)",
+      },
+      "&::-webkit-scrollbar-thumb": {
+        backgroundColor: "rgba(0,0,0,.1)",
+      },
     },
 
     blogText: {
@@ -212,6 +237,7 @@ const useStyles = makeStyles((theme) => {
 
         "& h3": {
           display: "block",
+          color: "black",
         },
 
         "& div": {
@@ -236,6 +262,14 @@ const useStyles = makeStyles((theme) => {
         color: colors.gray3,
         marginTop: "2rem",
       },
+
+      "& h3": {
+        color: "black",
+
+        "&:hover": {
+          color: colors.primary5,
+        },
+      },
     },
 
     active: {
@@ -253,6 +287,73 @@ const useStyles = makeStyles((theme) => {
 
     dialogFieldWrapper: {
       margin: "1rem 0rem",
+    },
+
+    footer: {
+      background: "#000051",
+      padding: "3rem",
+      justifyContent: "center",
+    },
+
+    footerSection: {
+      width: "80%",
+      margin: "auto",
+    },
+
+    footerText: {
+      color: "white",
+
+      "& h4": {
+        fontSize: "2rem",
+      },
+
+      "& p": {
+        color: "white",
+        margin: "1rem 0rem",
+        fontWeight: 100,
+      },
+
+      "& a": {
+        color: "white",
+        margin: "1rem 0rem",
+        fontWeight: 100,
+      },
+    },
+
+    footerTextDark: {
+      color: "white",
+
+      "& h4": {
+        fontSize: "2rem",
+      },
+
+      "& p": {
+        color: "white",
+        margin: "1rem 0rem",
+      },
+
+      "& a": {
+        color: "white",
+        margin: "1rem 0rem",
+      },
+    },
+
+    socialMediaIcon: {
+      display: "flex",
+      justifyContent: "center",
+      alignContent: "center",
+      backgroundColor: "white",
+      padding: "0.5rem",
+      borderRadius: "50%",
+      transition: "0.3s",
+
+      "& svg": {
+        fontSize: "1.5rem",
+      },
+
+      "&:hover": {
+        transform: "translate(0, -5%)",
+      },
     },
   };
 });
