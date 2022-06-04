@@ -173,6 +173,87 @@ const useStyles = makeStyles((theme) => {
     lowBtn: {
       border: "2px solid #3f51b5",
     },
+
+    //blogs
+
+    blogRouter: {
+      display: "flex",
+      gap: "2rem",
+      textTransform: "uppercase",
+      fontWeight: 800,
+
+      "& span": {
+        cursor: "pointer",
+        color: colors.gray3,
+      },
+    },
+
+    blogImage: {
+      width: "100%",
+      height: "100%",
+      display: "block",
+      borderRadius: "2rem",
+    },
+
+    blogContainer: {
+      margin: "2rem 0rem",
+    },
+
+    blogText: {
+      marginTop: "1rem",
+      color: "black",
+      display: "block",
+
+      "& >div:first-child": {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        margin: "1.5rem 0 3rem",
+
+        "& h3": {
+          display: "block",
+        },
+
+        "& div": {
+          fontSize: "1.5rem",
+
+          "& svg": {
+            marginRight: "1rem",
+            cursor: "pointer",
+          },
+        },
+      },
+
+      "& h4:first-child": {
+        color: colors.gray3,
+      },
+
+      "& p": {
+        color: colors.gray3,
+      },
+
+      "& h4:last-child": {
+        color: colors.gray3,
+        marginTop: "2rem",
+      },
+    },
+
+    active: {
+      backgroundColor: colors.primary8,
+      color: `${colors.primary5} !important`,
+      fontWeight: 800,
+    },
+
+    dialogHeading: {
+      color: "black",
+      marign: "1rem 0",
+      paddingBottom: "1rem",
+      fontWeight: 500,
+    },
+
+    dialogFieldWrapper: {
+      margin: "1rem 0rem",
+    },
   };
 });
 

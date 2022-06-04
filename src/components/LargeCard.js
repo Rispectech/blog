@@ -1,57 +1,60 @@
-import { Button, FormControl, TextField } from "@material-ui/core";
-import { useFormik } from "formik";
-import React from "react";
-import { useGlobalContext } from "../context";
-import CustomDialog from "./Dialog";
+import { Grid } from "@material-ui/core";
+import React, { useState } from "react";
 import useStyles from "./styles";
+import { FaEdit } from "react-icons/fa";
+import { AiFillDelete } from "react-icons/ai";
+import { useFormik } from "formik";
+import CustomDialog from "./Dialog";
+import { Button, FormControl, TextField } from "@material-ui/core";
 
-const Hero = () => {
+const LargeCard = ({ blog, editable }) => {
+  const [isEditing, setIsEditing] = useState(false);
   const classes = useStyles();
-  const [openDialog, setOpenDialog] = React.useState(false);
-
-  const { addStory } = useGlobalContext();
-  const formik = useFormik({
-    initialValues: {
-      urlToImage: "",
-      title: "",
-      description: "",
-      author: "",
-    },
-  });
+  const currentCalenderDate = new Date(blog.publishedAt);
 
   const handleClose = () => {
-    setOpenDialog(false);
+    setIsEditing(false);
   };
 
-  const handleSubmit = () => {
-    const newBlog = {
-      ...formik.values,
-      publishedAt: new Date(Date.now()),
-    };
-    addStory(newBlog);
-    formik.resetForm();
-    handleClose();
-  };
+  const formik = useFormik({
+    initialValues: blog,
+  });
   return (
-    <section className={`section ${classes.heroSection}`}>
-      <h2>You dont wanna miss the latest blogs right ?</h2>
-      <h4>Find the latest blogs or create some of your own</h4>
+    <div>
+      <Grid container spacing={10}>
+        <Grid item sm={7}>
+          <img src={blog.urlToImage} alt="" className={classes.blogImage} />
+        </Grid>
+        <Grid item sm={5}>
+          <a href={blog.url} className={classes.blogText}>
+            <div>
+              <h4>
+                {`${currentCalenderDate
+                  .toLocaleString("default", { month: "long" })
+                  .slice(
+                    0,
+                    3
+                  )} ${currentCalenderDate.getDate()} , ${currentCalenderDate.getFullYear()}`}
+              </h4>
 
-      <div className={classes.btnGroup}>
-        <Button variant="contained" color="primary" onClick={() => setOpenDialog(true)}>
-          Create your Own
-        </Button>
-        <Button color="primary" className={classes.lowBtn}>
-          Explore latest blogs
-        </Button>
-      </div>
+              {editable && (
+                <div>
+                  <FaEdit color="green" />
+                  <AiFillDelete color="red" />
+                </div>
+              )}
+            </div>
 
-      <CustomDialog
-        open={openDialog}
-        handleClose={handleClose}
-        dialogTitle="Create your own Blog"
-        onSubmit={handleSubmit}
-      >
+            <h3>{blog.title}</h3>
+
+            <p>{blog.description}</p>
+
+            <h4>{blog.author}</h4>
+          </a>
+        </Grid>
+      </Grid>
+
+      <CustomDialog open={isEditing} handleClose={handleClose} dialogTitle="Editing your blog">
         <FormControl fullWidth className={classes.childProfileImg}>
           <div className={classes.dialogFieldWrapper}>
             <TextField
@@ -107,8 +110,8 @@ const Hero = () => {
           </div>
         </FormControl>
       </CustomDialog>
-    </section>
+    </div>
   );
 };
 
-export default Hero;
+export default LargeCard;

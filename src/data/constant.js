@@ -50,3 +50,17 @@ export const social = [
     icon: <FaBehance />,
   },
 ];
+
+export const blogs = [
+  {
+    id: 1,
+    url: "/",
+    text: "latest blogs",
+  },
+
+  {
+    id: 2,
+    url: "/blogs",
+    text: "My blogs",
+  },
+];
