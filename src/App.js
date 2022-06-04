@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import { LeftVector, RightVector } from "./components/Vectors";
+
+const getData = async () => {
+  const response = await axios(
+    "https://newsapi.org/v2/everything?q=keyword&apiKey=f6690e0a17614924a14aee67d2ec5c01"
+  );
+  console.log(response.data);
+  return response.date[0];
+};
 
 function App() {
+  const [state, setState] = useState(false);
+
+  useEffect(() => {
+    const data = getData();
+    console.log(data);
+    setState(data);
+  }, []);
+
+  console.log(state.urlToImage);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section>
+      <Navbar />
+      <LeftVector />
+      <RightVector />
+      <Hero />
+    </section>
   );
 }
 
