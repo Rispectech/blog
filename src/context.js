@@ -31,7 +31,7 @@ const AppProvider = ({ children }) => {
 
   const setDummyData = async () => {
     const response = await axios(API_ENDPOINT + "&page=3", {
-      headers: { Origin: "localhost" },
+      headers: { origin: "localhost" },
     });
     // console.log(response.data);
     dispatch({ type: SET_STORIES, payload: response.data.articles });
@@ -50,7 +50,7 @@ const AppProvider = ({ children }) => {
   const setAllBlogs = async () => {
     const response = await axios(
       "https://newsapi.org/v2/everything?q=blog&apiKey=f6690e0a17614924a14aee67d2ec5c01",
-      { headers: { Origin: "localhost" } }
+      { headers: { origin: "localhost" } }
     );
     console.log(response.data);
     dispatch({ type: ALL_BLOGS, payload: response.data.articles });
