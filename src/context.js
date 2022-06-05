@@ -12,6 +12,7 @@ import {
   SET_LOCAL_STORAGE,
   ALL_BLOGS,
 } from "./data/actions";
+import { data } from "./data/data";
 import reducer from "./reducer";
 
 const API_ENDPOINT =
@@ -52,6 +53,7 @@ const AppProvider = ({ children }) => {
       "https://newsapi.org/v2/everything?q=blog&apiKey=f6690e0a17614924a14aee67d2ec5c01",
       { headers: { origin: "localhost" } }
     );
+    if (!response.data) dispatch({ type: ALL_BLOGS, payload: data });
     console.log(response.data);
     dispatch({ type: ALL_BLOGS, payload: response.data.articles });
   };
